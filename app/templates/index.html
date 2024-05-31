@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload a new Image</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    <h2>Detected Images</h2>
+    {% if files %}
+        <ul>
+        {% for file in files %}
+            <li><img src="{{ url_for('uploaded_file', filename=file) }}" alt="Detected Image"></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No files found.</p>
+    {% endif %}
+</body>
+</html>
